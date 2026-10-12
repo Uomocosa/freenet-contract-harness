@@ -1,6 +1,6 @@
 use freenet_stdlib::prelude::*;
 
-pub type DivergentGen = fn() -> Option<(State<'static>, State<'static>)>;
+use crate::basic::type_aliases::DivergentGen;
 
 pub struct SuiteConfig {
     pub params: Parameters<'static>,
@@ -9,5 +9,3 @@ pub struct SuiteConfig {
     pub gen_divergent_equal_total: Option<DivergentGen>,
     pub empty_state: fn() -> State<'static>,
 }
-
-// no test_usage necessary
