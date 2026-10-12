@@ -11,6 +11,7 @@ rustup toolchain install nightly    # rust-toolchain.toml pins channel + compone
 cargo install cargo-nextest
 cargo install just
 cargo install --git https://github.com/Uomocosa/lele-rust-linter lele-lint
+cargo binstall prek                 # hook runner (`prek install` via `just setup`)
 ```
 
 Pure Rust — no system libraries.
@@ -19,6 +20,7 @@ Pure Rust — no system libraries.
 
 ```sh
 just build | just clippy | just fmt | just test | just lint
-just hooks      # point git at .githooks/
+just setup    # one-time per clone: install the prek git hooks
+just check    # run the full gate (same as CI)
 just ci
 ```
