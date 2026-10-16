@@ -1,5 +1,8 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
+# Build outside `[R] Rust` (jemalloc's configure rejects spaces); persistent, portable.
+export CARGO_TARGET_DIR := env("HOME") / ".cache/cargo-target/freenet-contract-harness"
+
 # Toolchain: rust-toolchain.toml. Extra tools: cargo-nextest, just, and
 # `lele-lint` (`cargo install --git https://github.com/Uomocosa/lele-rust-linter lele-lint`).
 
