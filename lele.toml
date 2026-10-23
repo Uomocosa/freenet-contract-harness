@@ -1,1 +1,10 @@
 [lele.lint]
+
+# `run_suite` is the harness's one public entry point: a contract crate calls it
+# from its own test to run the suite. It cannot be a method of `SuiteConfig`
+# because `#[atomic_delegates]` drops method-level generics (`run_suite::<C>`),
+# so the contract type would be lost in the delegate call.
+[[lele.lint.entry_points]]
+file = "src/run_suite.rs"
+fn = "run_suite"
+reason = "the harness's public entry point: a contract crate calls it from its test to run the suite"
