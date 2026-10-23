@@ -507,7 +507,9 @@ fn try_apply<C: ContractInterface>(
 #[cfg(test)]
 mod tests {
     use crate::SuiteConfig;
+    use crate::run_suite;
     use freenet_stdlib::prelude::*;
+    use rstest::rstest;
     use std::collections::BTreeMap;
 
     struct DummyContract;
@@ -636,83 +638,38 @@ mod tests {
         }
     }
 
-    #[test]
-    fn validate_accepts_gen() {
-        super::assert_validate_accepts_gen::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn validate_rejects_garbage() {
-        super::assert_validate_rejects_garbage::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn summarize_deterministic() {
-        super::assert_summarize_deterministic::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn summarize_detects_structural_divergence() {
-        super::assert_summarize_detects_structural_divergence::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn delta_nonempty_and_roundtrips() {
-        super::assert_delta_nonempty_and_roundtrips::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn delta_handles_bad_summary() {
-        super::assert_delta_handles_bad_summary::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_idempotent() {
-        super::assert_update_idempotent::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_commutative() {
-        super::assert_update_commutative::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_associative() {
-        super::assert_update_associative::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_reads_data_not_state_plus1() {
-        super::assert_update_reads_data_not_state_plus1::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_empty_and_unknown_noop() {
-        super::assert_update_empty_and_unknown_noop::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn update_rejects_garbage_data_without_panic() {
-        super::assert_update_rejects_garbage_data_without_panic::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn self_delta_empty() {
-        super::assert_self_delta_empty::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn delta_equivalence() {
-        super::assert_delta_equivalence::<DummyContract>(&cfg());
-    }
-
-    #[test]
-    fn state_and_delta() {
-        super::assert_update_state_and_delta::<DummyContract>(&cfg());
+    #[rstest]
+    #[case::validate_accepts_gen(run_suite::assert_validate_accepts_gen::<DummyContract>)]
+    #[case::validate_rejects_garbage(run_suite::assert_validate_rejects_garbage::<DummyContract>)]
+    #[case::summarize_deterministic(run_suite::assert_summarize_deterministic::<DummyContract>)]
+    #[case::summarize_detects_structural_divergence(
+        run_suite::assert_summarize_detects_structural_divergence::<DummyContract>
+    )]
+    #[case::delta_nonempty_and_roundtrips(
+        run_suite::assert_delta_nonempty_and_roundtrips::<DummyContract>
+    )]
+    #[case::delta_handles_bad_summary(run_suite::assert_delta_handles_bad_summary::<DummyContract>)]
+    #[case::update_idempotent(run_suite::assert_update_idempotent::<DummyContract>)]
+    #[case::update_commutative(run_suite::assert_update_commutative::<DummyContract>)]
+    #[case::update_associative(run_suite::assert_update_associative::<DummyContract>)]
+    #[case::update_reads_data_not_state_plus1(
+        run_suite::assert_update_reads_data_not_state_plus1::<DummyContract>
+    )]
+    #[case::update_empty_and_unknown_noop(
+        run_suite::assert_update_empty_and_unknown_noop::<DummyContract>
+    )]
+    #[case::update_rejects_garbage_data_without_panic(
+        run_suite::assert_update_rejects_garbage_data_without_panic::<DummyContract>
+    )]
+    #[case::self_delta_empty(run_suite::assert_self_delta_empty::<DummyContract>)]
+    #[case::delta_equivalence(run_suite::assert_delta_equivalence::<DummyContract>)]
+    #[case::state_and_delta(run_suite::assert_update_state_and_delta::<DummyContract>)]
+    fn contract_check(#[case] check: fn(&SuiteConfig)) {
+        check(&cfg());
     }
 
     #[test]
     fn test_usage() {
-        super::run_suite::<DummyContract>(&cfg());
+        run_suite::run_suite::<DummyContract>(&cfg());
     }
 }

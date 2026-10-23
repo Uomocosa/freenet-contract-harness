@@ -28,6 +28,9 @@ freenet-stdlib = { version = "=0.8.5", features = ["contract"] }
 serde = { version = "=1.0.228", features = ["derive"] }
 bincode = "=1.3.3"
 
+[dev-dependencies]
+rstest = "=0.28.0"
+
 # Early-phase profile: optimise for compile time and peak RAM, not runtime speed.
 # Debug info is a big RAM/disk cost; keep only line tables for our crate
 # (readable backtraces) and none for dependencies.
