@@ -294,7 +294,7 @@ dependencies = [
 
 [[package]]
 name = "freenet-contract-harness"
-version = "0.0.4"
+version = "0.0.5"
 dependencies = [
  "bincode",
  "freenet-stdlib",
