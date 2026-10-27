@@ -27,6 +27,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d3fb67a6e08acf24fdeccbac2cb6ac4305825bd1f117462e0e6f2f193345ad56"
 
 [[package]]
+name = "atomic-delegate-macros"
+version = "0.0.7"
+source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.7#177341a077d08105c946e5121768f9fd57b213ec"
+dependencies = [
+ "lele-snake-case",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -296,6 +307,7 @@ dependencies = [
 name = "freenet-contract-harness"
 version = "0.0.5"
 dependencies = [
+ "atomic-delegate-macros",
  "bincode",
  "freenet-stdlib",
  "rstest",
@@ -566,6 +578,11 @@ name = "lazy_static"
 version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "20870f649af7073d53e38067b2a84312175d56ea15217e1b15bc83506ec50afb"
+
+[[package]]
+name = "lele-snake-case"
+version = "0.0.7"
+source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.7#177341a077d08105c946e5121768f9fd57b213ec"
 
 [[package]]
 name = "libc"
