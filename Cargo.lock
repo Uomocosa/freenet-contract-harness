@@ -28,8 +28,8 @@ checksum = "d3fb67a6e08acf24fdeccbac2cb6ac4305825bd1f117462e0e6f2f193345ad56"
 
 [[package]]
 name = "atomic-delegate-macros"
-version = "0.0.7"
-source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.7#177341a077d08105c946e5121768f9fd57b213ec"
+version = "0.0.8"
+source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.8#4afd07e1d6cc84682efcf732abd78f6bfcd4a084"
 dependencies = [
  "lele-snake-case",
  "proc-macro2",
@@ -305,7 +305,7 @@ dependencies = [
 
 [[package]]
 name = "freenet-contract-harness"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "atomic-delegate-macros",
  "bincode",
@@ -581,8 +581,8 @@ checksum = "20870f649af7073d53e38067b2a84312175d56ea15217e1b15bc83506ec50afb"
 
 [[package]]
 name = "lele-snake-case"
-version = "0.0.7"
-source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.7#177341a077d08105c946e5121768f9fd57b213ec"
+version = "0.0.8"
+source = "git+https://github.com/Uomocosa/lele-rust-linter?tag=v0.0.8#4afd07e1d6cc84682efcf732abd78f6bfcd4a084"
 
 [[package]]
 name = "libc"
