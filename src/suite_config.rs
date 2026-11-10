@@ -1,6 +1,6 @@
 use freenet_stdlib::prelude::*;
 
-use crate::basic::type_aliases::DivergentGen;
+use crate::DivergentGen;
 use atomic_delegate_macros::atomic_delegates;
 
 pub struct SuiteConfig {
