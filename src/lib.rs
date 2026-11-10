@@ -1,6 +1,6 @@
 #[path = "__basic__/mod.rs"]
 pub mod basic;
-#[path = "../methods/mod.rs"]
+#[path = "../__methods__/mod.rs"]
 mod methods;
 mod run_suite;
 mod suite_config;
