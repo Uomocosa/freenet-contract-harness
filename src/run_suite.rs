@@ -22,6 +22,8 @@ pub fn run_suite<C: ContractInterface>(cfg: &SuiteConfig) {
 
 #[cfg(test)]
 mod tests {
+    use std::panic;
+
     use crate::SuiteConfig;
     use crate::run_suite;
     use crate::testing::{DummyContract, dummy_suite_config};
@@ -59,6 +61,11 @@ mod tests {
 
     #[test]
     fn test_usage() {
-        run_suite::run_suite::<DummyContract>(&dummy_suite_config());
+        let config = dummy_suite_config();
+        let outcome = panic::catch_unwind(|| run_suite::run_suite::<DummyContract>(&config));
+        assert!(
+            outcome.is_ok(),
+            "run_suite must accept the conforming DummyContract"
+        );
     }
 }
