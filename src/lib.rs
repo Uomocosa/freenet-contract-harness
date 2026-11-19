@@ -4,6 +4,8 @@ mod basic;
 mod methods;
 mod run_suite;
 mod suite_config;
+#[cfg(test)]
+pub(crate) mod testing;
 
 pub use basic::type_aliases::DivergentGen;
 pub use run_suite::run_suite;
