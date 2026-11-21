@@ -19,6 +19,7 @@ test:
     cargo nextest run --all-targets --all-features
 
 lint:
+    lele-lint --config lele.toml --sync-config --check .
     lele-lint .
 
 setup:
